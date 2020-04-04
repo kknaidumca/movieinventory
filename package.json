@@ -1,11 +1,11 @@
 {
-  "name": "sample-rest-api",
+  "name": "movie-inventory-rest-api",
   "version": "1.0.1",
   "description": "Restful backend API ",
   "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "pm2:local": "pm2 start ecosystem.config.json --env local"
   },
   "author": "K K Naidu",
