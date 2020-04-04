@@ -5,8 +5,7 @@
   "main": "server.js",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
-    "pm2:local": "pm2 start ecosystem.config.json --env local"
+    "start": "nodemon server.js"
   },
   "author": "K K Naidu",
   "license": "K K Naidu",
