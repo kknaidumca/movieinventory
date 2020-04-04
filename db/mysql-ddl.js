@@ -1,18 +1,19 @@
 module.exports = {
     select: {
-        getUserDetailsByName: "select * from userdetails where name=?",
-        isUserExists: "select count(*) as rowcount from userdetails where name=? and type = ? and favorite = ?",
-        getUserById: "select * from userdetails where id=?",
-        getUserByNameType: "select * from userdetails where name=? and type=?",
-        updatedUser: "select * from userdetails where name = ? and type = ? and favorite = ?"
+        listMovies: "select * from movies",
+        listAvialableMovies: "select * from movies where isAvialable=1",
+        isMovieExists: "select count(1) as moviecount from movies where name=?",
+        movieDetails: "select * From movies where name=? and isAvialable = 1"
     },
     insert: {
-        addUser: "insert into userdetails (name, type, favorite) values(?, ?, ?)"
+        addMovie: "insert into movies(name, type, isAvialable, price) values(?, ?, ?, ?)",
+        insertToCustomer: "insert into customerhistory(name, moviename, movietype, price, bonus) values(?,?,?,?,?)"
     },
     update: {
-        updateUser: "update userdetails set favorite = ? where name = ? and type = ?"
+        updateMovieType: "update movies set type=?, price=? where name=?",
+        updateRentStatus : "update movies set isAvialable=0 where name=?"
     },
     delete: {
-        deleteUser: "delete from userdetails where name = ? and type = ? and favorite = ?"
+        deleteMovie: "delete from movies where name=?"
     }
 }

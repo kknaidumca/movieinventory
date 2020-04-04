@@ -7,7 +7,7 @@ const cors = require('cors');
 const compression = require('compression');
 const logger = require('./logger/logger');
 const config = require('./config/config');
-const userRoutes = require('./routes/user-routes');
+const movieRoutes = require('./routes/movie-route');
 
 // added swagger module
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -19,9 +19,9 @@ const basePath = '/api/v1/';
 let host = config.app_host;
 const swaggerDefinition = {
     info: {
-        title: 'Sample Restful API',
+        title: 'Movie Rental Restful API',
         version: '1.0.1',
-        description: 'Sample Restful API with Swagger',
+        description: 'Movie Rental Restful API with Swagger',
     },
     host,
     basePath: basePath,
@@ -63,7 +63,7 @@ app.use(helmet());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,POST');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,Authorization');
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Accept', 'application/json');
@@ -72,7 +72,7 @@ app.use((req, res, next) => {
 // redirect to swagger api docs
 app.get([basePath, '/'], (req, res) => res.redirect(basePath + 'api-docs'));
 // Route All CURD operations
-app.use(basePath, cors(), userRoutes);
+app.use(basePath, cors(), movieRoutes);
 
 /********* error handlers **************/
 

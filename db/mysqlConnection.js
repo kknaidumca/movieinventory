@@ -1,6 +1,7 @@
 'use strict';
 const mysql = require('mysql');
 const mysqlConnectionOption = require('../config/config').database.mysql;
+const util = require('util');
 /*
  * @sqlConnection
  * Creates the connection, makes the query and close it to avoid concurrency conflicts.
@@ -14,15 +15,15 @@ class Database {
         connection.connect();
         return connection;
     }
-    query(options, params, callback) {
+    async query(options) {
         try {
             let conn = this.getConnection();
-            conn.query(options, params, (err, rows) => {
-                conn.end()
-                callback(err, rows)
-            });
+            const query = util.promisify(conn.query).bind(conn);
+            let rows = await query(options.query, options.params);
+            conn.end();
+            return rows;
         } catch (error) {
-            callback(error, null)
+            console.error(error);
         }
     }
     multipleQuery(options, callback) {
