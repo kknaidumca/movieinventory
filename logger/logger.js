@@ -16,7 +16,6 @@ const env = process.env.NODE_ENV || 'development';
 const pathDir = `../../${config.appLogggerDirectory || process.env.appLogggerDirectory}`;
 var logDir = path.join(__dirname, pathDir);
 
-// Create the log directory if it does not exist
 if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir);
 }

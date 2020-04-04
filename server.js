@@ -12,7 +12,7 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 function onError(error) {
-    // handle specific listen errors with friendly messages
+    // handle specific listen errors with friendly messages from here
     switch (error.code) {
         case 'EACCES':
             logger.error(' requires elevated privileges');
