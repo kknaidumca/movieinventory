@@ -1,0 +1,29 @@
+{
+    "apps": [
+        {
+            "name": "movieinventory",
+            "script": "./server.js",
+            "instances": "1",
+            "exec_mode": "fork",
+            "watch": true,
+            "max_memory_restart": "1500M",
+            "node_args": [
+                "--max_old_space_size=1024"
+            ],
+            "ignore_watch": [
+                "node_modules",
+                ".gitignore",
+                ".gitlab-ci.yml"
+            ],
+            "error_file": "../logs_movieinventory/err.log",
+            "out_file": "../logs_movieinventory/out.log",
+            "log_date_format": "YYYY-MM-DD HH:mm Z",
+            "env": {
+                "NODE_ENV": "local"
+            },
+            "env_local": {
+                "NODE_ENV": "local"
+            }
+        }
+    ]
+}
